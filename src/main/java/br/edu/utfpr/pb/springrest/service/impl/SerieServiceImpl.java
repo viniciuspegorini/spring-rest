@@ -1,6 +1,8 @@
 package br.edu.utfpr.pb.springrest.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +21,11 @@ public class SerieServiceImpl
 	@Override
 	protected JpaRepository<Serie, Long> getRepository() {
 		return serieRepository;
+	}
+
+	@Override
+	public Page<Serie> findByNomeLikeOrResumoLike(String nome, String resumo, Pageable pageable) {
+		
+		return serieRepository.findByNomeLikeOrResumoLike(nome, resumo, pageable);
 	}
 }

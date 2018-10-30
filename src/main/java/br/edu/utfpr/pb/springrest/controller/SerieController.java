@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +37,26 @@ public class SerieController
 		return serieService;
 	}
 	
+	@GetMapping("search")
+	public Page<Serie> findByNomeLike(
+			@RequestParam String filter,
+			@RequestParam int page,
+			@RequestParam int size,
+			@RequestParam(required = false) String order,
+			@RequestParam(required = false) Boolean asc){
+			PageRequest pageRequest = 
+					PageRequest.of(page, size);
+			if (order != null && asc != null) {
+				PageRequest.of(page, size, 
+						asc ? Sort.Direction.ASC :
+							Sort.Direction.DESC, 
+							order);
+			}
+		return serieService
+				.findByNomeLikeOrResumoLike("%" + filter + "%", "%" + filter + "%", pageRequest);
+	}
+	
+	//UPLOAD
 	@PostMapping("upload/{id}")
 	public void upload(@PathVariable Long id,
 		@RequestParam("imagem") MultipartFile imagem,
@@ -42,7 +66,7 @@ public class SerieController
 			saveFile(id, imagem, request);
 		}
 	}
-
+	
 	private void saveFile(Long id, 
 			MultipartFile imagem, 
 			HttpServletRequest request) throws Exception {

@@ -44,7 +44,6 @@ public abstract class CrudController
 						order);
 		}
 		return getService().findAll(pageRequest);
-		
 	}
 	
 	@GetMapping("{id}")
