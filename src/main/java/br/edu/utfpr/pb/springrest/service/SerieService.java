@@ -9,4 +9,6 @@ public interface SerieService
 		extends CrudService<Serie, Long>{
 
 	Page<Serie> findByNomeLikeOrResumoLike(String nome, String resumo, Pageable pageable);
+
+	long countByNomeLikeOrResumoLike(String nome, String resumo);
 }

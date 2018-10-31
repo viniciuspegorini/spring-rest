@@ -28,4 +28,9 @@ public class SerieServiceImpl
 		
 		return serieRepository.findByNomeLikeOrResumoLike(nome, resumo, pageable);
 	}
+	
+	@Override
+	public long countByNomeLikeOrResumoLike(String nome, String resumo) {
+		return serieRepository.countByNomeLikeOrResumoLike(nome, resumo);
+	}
 }

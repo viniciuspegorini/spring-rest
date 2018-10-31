@@ -11,6 +11,8 @@ public interface SerieRepository
 
 	Page<Serie> findByNomeLikeOrResumoLike(String nome, String resumo, Pageable pageable);
 	
+	long countByNomeLikeOrResumoLike(String nome, String resumo);
+	
 }
 
 

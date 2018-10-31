@@ -56,6 +56,14 @@ public class SerieController
 				.findByNomeLikeOrResumoLike("%" + filter + "%", "%" + filter + "%", pageRequest);
 	}
 	
+	@GetMapping("search/count")
+	public long findByNomeLike(
+			@RequestParam String filter) {
+		
+		return serieService
+				.countByNomeLikeOrResumoLike("%" + filter + "%", "%" + filter + "%");
+	}
+	
 	//UPLOAD
 	@PostMapping("upload/{id}")
 	public void upload(@PathVariable Long id,
