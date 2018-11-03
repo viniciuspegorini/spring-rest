@@ -91,3 +91,13 @@ INSERT INTO serie (nome, resumo, dataestreia, dataencerramento, nota, genero_id,
 INSERT INTO serie (nome, resumo, dataestreia, dataencerramento, nota, genero_id, produtora_id, imagem) VALUES ('Family Guy', 'In a wacky Rhode Island town, a dysfunctional family strive to cope with everyday life as they are thrown from one crazy scenario to another.','1999-01-31', null, 82.00, 1, 1, '10.jpg');
 INSERT INTO serie (nome, resumo, dataestreia, dataencerramento, nota, genero_id, produtora_id, imagem) VALUES ('The X Files', 'Two FBI agents, Fox Mulder the believer and Dana Scully the skeptic, investigate the strange and unexplained, while hidden forces work to impede their efforts.','1993-09-10', null, 87.00, 1, 1, '11.jpg');
 INSERT INTO serie (nome, resumo, dataestreia, dataencerramento, nota, genero_id, produtora_id, imagem) VALUES ('Vikings', 'The world of the Vikings is brought to life through the journey of Ragnar Lothbrok, the first Viking to emerge from Norse legend and onto the pages of history - a man on the edge of myth.','2016-06-13', null, 86.00, 1, 1, '12.jpg');
+
+INSERT INTO permissao (nome) values('ROLE_ADMIN');
+INSERT INTO permissao (nome) values('ROLE_USER');
+
+INSERT INTO usuario(nome, username, password) VALUES ('Administrador', 'admin','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem');
+INSERT INTO usuario(nome, username, password) VALUES ('Teste', 'teste','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem');
+
+INSERT INTO usuario_permissoes(usuario_id, permissoes_id) VALUES (1, 1);
+INSERT INTO usuario_permissoes(usuario_id, permissoes_id) VALUES (1, 2);
+INSERT INTO usuario_permissoes(usuario_id, permissoes_id) VALUES (2, 2);
